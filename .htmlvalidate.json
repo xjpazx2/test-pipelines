@@ -1,0 +1,10 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "indentation": ["error", 2],
+    "line-end-style": ["error", "unix"],
+    "void-style": "error",
+    "lang": ["error", { "allow": ["es"] }]
+  }
+}
+

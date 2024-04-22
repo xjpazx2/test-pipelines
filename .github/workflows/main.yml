@@ -20,8 +20,10 @@ jobs:
 
       - name: Verificar ortografía en index.html
         run: |
-          # Encuentra el archivo index.html y verifica la ortografía
-          aspell --lang=es list < index.html || true  # Usa '|| true' para evitar que el comando falle si hay errores
+          # Filtrar palabras reservadas de HTML y CSS antes de la verificación ortográfica
+          sed -e 's/<[^>]*>//g' -e 's/{[^}]*}//g' index.html |   # Eliminar etiquetas HTML y propiedades CSS
+          aspell --lang=es list || true          # Verificar ortografía con aspell
+
 
 
 

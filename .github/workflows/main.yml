@@ -22,7 +22,7 @@ jobs:
         run: |
           # Filtrar palabras reservadas de HTML y CSS antes de la verificación ortográfica
           sed -e 's/<[^>]*>//g' -e 's/{[^}]*}//g' index.html |   # Eliminar etiquetas HTML y propiedades CSS
-          grep -n -E -o '\b(Lorem|ipsum|sit|amet|consectetur|adipiscing|elit|Ut|enim|ad|minim|veniam|quis|nostrud|exercitation)\b' |  # Buscar palabras comunes y obtener número de línea
+          grep -v -E '\b(Lorem|ipsum|sit|amet|consectetur|adipiscing|elit|Ut|enim|ad|minim|veniam|quis|nostrud|exercitation)\b' |  # Excluir palabras comunes
           aspell --lang=es list || true          # Verificar ortografía con aspell
 
 

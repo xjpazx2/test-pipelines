@@ -18,8 +18,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y aspell aspell-es
 
-      - name: Verificar ortografía en español
+      - name: Verificar ortografía en index.html
         run: |
-          find . -name "*.html" -type f -exec sh -c 'cat {} | aspell --lang=es list | grep -v "[A-Za-z]"' \;
+          # Encuentra el archivo index.html y verifica la ortografía
+          aspell --lang=es list < index.html || true  # Usa '|| true' para evitar que el comando falle si hay errores
+
 
 

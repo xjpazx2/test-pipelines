@@ -20,7 +20,8 @@ header {
 }
 
 .logo {
-    width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+    width: 200px; /* Ajusta el tamaño del logo según sea necesario */
+    height: auto; /* Mantén la proporción de la imagen */
 }
 
 .main-content {
@@ -32,7 +33,7 @@ article {
 }
 
 h1, h2, h3 {
-    color: #007bff;
+    color: #e60000; /* Cambia el color del texto a un rojo menos intenso */
 }
 
 ul {
@@ -43,7 +44,7 @@ ul {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #007bff;
+    background-color: #ff9999; /* Cambia el color de fondo del pie de página a un tono de rojo */
     color: #fff;
 }
 

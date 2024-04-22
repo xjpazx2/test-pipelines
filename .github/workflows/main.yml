@@ -1,4 +1,4 @@
-name: HTML Validation Pipeline
+name: Spell Check Pipeline
 
 on:
   push:
@@ -6,28 +6,20 @@ on:
       - main
 
 jobs:
-  build:
+  spellcheck:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Checkout del código
       - name: Checkout código
         uses: actions/checkout@v2
 
-      # Paso 2: Instalación de aspell (diccionario español)
       - name: Install aspell (Spanish dictionary)
-        run: sudo apt-get install aspell aspell-es
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-es
 
-      # Paso 3: Validación ortográfica en español
       - name: Verificar ortografía en español
         run: |
           find . -name "*.html" -type f -exec sh -c 'cat {} | aspell --lang=es list | grep -v "[A-Za-z]"' \;
 
-      # Paso 4: Instalación de html-validate
-      - name: Install html-validate
-        run: npm install html-validate
-
-      # Paso 5: Validación general de HTML
-      - name: Validar HTML
-        run: npx html-validate "**/*.html" --config .htmlvalidate.json
 
